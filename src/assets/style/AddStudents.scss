@@ -1,0 +1,14 @@
+.container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    form{
+        .bx-log-out{
+            font-size: 2.5rem;
+        }
+        padding:2rem;
+        width:100%;
+    }
+
+}
