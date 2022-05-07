@@ -1,4 +1,26 @@
+import app from "../firebase/FireBase";
+import { useState, useEffect } from "react";
+import {getFirestore,  collection, query, onSnapshot, orderBy} from 'firebase/firestore';
+const dataBase = getFirestore(app);
+
+
 const Periodo2 = ()=>{
+
+    const [periodo2, setPeriodo2] = useState([]);
+    useEffect(()=>{
+        const getAllsubject = ()=>{
+            try{
+                const collectionRef = collection(dataBase, 'Período: 2');
+                const q = query(collectionRef, orderBy('fecha', 'asc'));
+                onSnapshot(q, (querySnap)=>{
+                    setPeriodo2(querySnap.docs.map(doc=>({...doc.data(), id:doc.id})))
+                })
+            }catch(err){
+                console.log(err)
+            }
+        }
+        getAllsubject();
+    },[periodo2])
     return(
         <table class="table table-hover table-info table-striped table-borderless">
             <thead class="bg-primary">
@@ -18,6 +40,27 @@ const Periodo2 = ()=>{
                 </tr>
             </thead>
             <tbody>
+            {
+                    periodo2.map(p2=>{
+                        return(
+                            <tr key={p2.id}>
+
+                                <td>{  p2.codigo }</td>
+                                <td>{  p2.creditos }</td>
+                                <td>{  p2.asignatura }</td>
+                                <td>{  p2.modalidad }</td>
+                                <td>{  p2.docente }</td>
+                                <td>{  p2.codigoHora === 'D' ? p2.horario  : ''}</td>
+                                <td>{  p2.codigoHora === 'L' ? p2.horario  : ''}</td>
+                                <td>{  p2.codigoHora === 'M' ? p2.horario  : ''}</td>
+                                <td>{  p2.codigoHora === 'MI' ? p2.horario : ''}</td>
+                                <td>{  p2.codigoHora === 'J' ? p2.horario  : ''}</td>
+                                <td>{  p2.codigoHora === 'V' ? p2.horario  : ''}</td>
+                                <td>{  p2.codigoHora === 'S' ? p2.horario  : ''}</td>
+                            </tr>
+                        )
+                    })
+                }
                 
             </tbody>
         </table>
