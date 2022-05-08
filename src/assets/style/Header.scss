@@ -1,9 +1,9 @@
 .header{
-    padding:6px 90px 6px 30px;
+    padding:6px 70px 6px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: all .8s;
+    // transition: all .8s;
 
     .navbar{
         width:75%;
@@ -34,7 +34,7 @@
     }
 
     .header-perfil{
-        width:18%;
+        width:23%;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -60,6 +60,17 @@
         .bxs-folder-plus{
             font-size: 1.7rem;
             color:#eee;
+        }
+        .first-letter{
+            
+            font-size: 1.5rem;
+            border-radius: 2rem;
+            width:12%;
+            height:5%;
+            display: flex;
+            justify-content: center;
+            padding: 0 0 .1rem 0;
+            user-select: none;
         }
     }
 }

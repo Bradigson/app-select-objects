@@ -1,20 +1,27 @@
 import '../assets/style/Header.scss';
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-const Header = ()=>{
-    const [darkMode, setDarkMode] = useState(false);
+const Header = ({ getMode })=>{
+    const [darkMode, setDarkMode] = useState(true);
+    const [user, setUser] = useState(
+        localStorage.getItem('user')
+    );
+    const [color, setColor] = useState(
+        localStorage.getItem('color')
+    )
+
+
     const navigate = useNavigate();
     const handleSignout = ()=>{
+        localStorage.removeItem('user');
         navigate('/')
     }
-    
-    const hanldeDakrMode = ()=>{
-        setDarkMode(!darkMode);
-        localStorage.setItem('darkMode', darkMode);
-    }
+  
+
+
     return(
-      <header className={darkMode ?  'bg-primary header' : 'bg-dark header'}>
+      <header className={'bg-primary header'}>
           
           <nav className="navbar">
               <div className="hamburger-menu">
@@ -33,18 +40,21 @@ const Header = ()=>{
               </ul>
                 
           </nav>
-          <div className="header-perfil">
+          <div className="header-perfil ">
                     <div className=' pt-1'>
                         <i className='bx bx-user-circle'></i>
                     </div>
                     <div>
                         <button className=" btn text-light" onClick={handleSignout}>SignOut</button>
                     </div>
-                    <div className='ms-3 ' onClick={hanldeDakrMode}>
-                      <i className={darkMode ?  'bx bxs-moon' : 'bx bxs-sun'}></i>
+                    <div className='ms-3 '>
+                      <button onClick={()=>setDarkMode(!darkMode)} className='btn text-light '><i className={darkMode ?  'bx bxs-moon' : 'bx bxs-sun'}></i></button>
                     </div>
                     <div className='ms-5'>
                         <Link to='/add_students' className=''><i className='bx bxs-folder-plus'></i></Link>
+                    </div>
+                    <div className='ms-4 first-letter' style={{ backgroundColor : color}}>
+                        <span>{user.slice(0,1).toUpperCase()}</span>
                     </div>
             </div>
             

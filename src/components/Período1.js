@@ -5,6 +5,7 @@ const dataBase = getFirestore(app);
 
 const Periodo1 = ()=>{
 
+    
     const [periodo1, setPeriodo1] = useState([]);
     useEffect(()=>{
         const getAllsubject = ()=>{
@@ -19,7 +20,8 @@ const Periodo1 = ()=>{
             }
         }
         getAllsubject();
-    },[periodo1])
+    },[])
+    
     
     return(
         <table className="table table-hover table-info table-striped table-borderless">

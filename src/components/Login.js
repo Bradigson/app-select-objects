@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 const LogIn = ()=>{
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [color, setColor] = useState('#000');
+
     const navigate = useNavigate();
 
     const handleEmail = (e)=>{
@@ -21,9 +23,34 @@ const LogIn = ()=>{
         }else if(password === ''){
             alert('campo password vacio')
         }else{
+            localStorage.setItem('user', email);
             navigate('select-objects/periodo_1')
         }
     }
+
+
+    // color generator
+
+    const getRgb = ()=>Math.floor(Math.random() * 256);
+    const rgbToText = (r,g,b)=>
+    '#' + 
+    [r, g, b]
+    .map(x=>{
+        const hex = x.toString(16);
+        return hex.length === 1 ? '0' + hex : hex;
+    })
+    .join('');
+    const handleGenerate = ()=>{
+        const color = {
+            r : getRgb(),
+            g : getRgb(),
+            b : getRgb(),
+        };
+        setColor(rgbToText(color.r, color.g, color.b));
+        
+    }
+    localStorage.setItem('color', color)
+  
 
     return(
         <div>
@@ -39,7 +66,7 @@ const LogIn = ()=>{
                     ria-describedby="basic-addon1" value={password} onChange={handlePassword}/>
                 </div>
                 <div>
-                     <button  className="btn btn-outline-primary">Primary</button>
+                     <button  onClick={handleGenerate} className="btn btn-outline-primary">Primary</button>
                 </div>
             </form>
         </div>

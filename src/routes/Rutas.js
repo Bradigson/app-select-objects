@@ -11,6 +11,8 @@ import Periodo7 from "../components/Periodo7";
 import AddStudents from "../components/AddStudents";
 
 const Rutas = ()=>{
+
+    
     return(
         <Routes>
             <Route path='/' element={<LogIn/>}/>
