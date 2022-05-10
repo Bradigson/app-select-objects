@@ -1,15 +1,20 @@
 import '../assets/style/Header.scss';
+import '../assets/MediaQueries/HeaderResponsive.scss';
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useState, useEffect } from 'react';
 
 const Header = ({ getMode })=>{
-    const [darkMode, setDarkMode] = useState(true);
+    const [menu, setMenu] = useState(false);
     const [user, setUser] = useState(
         localStorage.getItem('user')
     );
     const [color, setColor] = useState(
         localStorage.getItem('color')
     )
+
+    const handleMenu = ()=>{
+        setMenu(!menu);
+    }
 
 
     const navigate = useNavigate();
@@ -21,10 +26,10 @@ const Header = ({ getMode })=>{
 
 
     return(
-      <header className={'bg-primary header'}>
+      <header className=' bg-primary header'>
           
-          <nav className="navbar">
-              <div className="hamburger-menu">
+          <nav className={`${menu ? 'change' : ''}${' navbar '}`}>
+              <div className="hamburger-menu" onClick={handleMenu}>
                   <div className="line line-1"></div>
                   <div className="line line-2"></div>
                   <div className="line line-3"></div>
@@ -40,21 +45,21 @@ const Header = ({ getMode })=>{
               </ul>
                 
           </nav>
-          <div className="header-perfil ">
+          <div className="header-perfil  ">
                     <div className=' pt-1'>
                         <i className='bx bx-user-circle'></i>
                     </div>
+                    
                     <div>
                         <button className=" btn text-light" onClick={handleSignout}>SignOut</button>
                     </div>
-                    <div className='ms-3 '>
-                      <button onClick={()=>setDarkMode(!darkMode)} className='btn text-light '><i className={darkMode ?  'bx bxs-moon' : 'bx bxs-sun'}></i></button>
-                    </div>
-                    <div className='ms-5'>
-                        <Link to='/add_students' className=''><i className='bx bxs-folder-plus'></i></Link>
-                    </div>
+                   
+                   
                     <div className='ms-4 first-letter' style={{ backgroundColor : color}}>
                         <span>{user.slice(0,1).toUpperCase()}</span>
+                    </div>
+                    <div className='ms-5 carpeta'>
+                        <Link to='/add_students' className=''><i className='bx bxs-folder-plus'></i></Link>
                     </div>
             </div>
             

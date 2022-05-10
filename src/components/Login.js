@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import '../assets/style/Login.scss';
+
 const LogIn = ()=>{
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -53,7 +55,7 @@ const LogIn = ()=>{
   
 
     return(
-        <div>
+        <div className="form-container container">
             <form onSubmit={handleSubmit}>
                 <div className="input-group mb-3">
                     <span className="input-group-text" id="basic-addon1"><i className='bx bxs-envelope'></i></span>

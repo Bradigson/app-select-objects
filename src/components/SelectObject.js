@@ -1,15 +1,19 @@
 import { Outlet } from "react-router-dom";
+import '../App.css'
 import Header from "./Header";
 
 const SelectObject = ()=>{
      
    
     return(
-        <div>
+        <div className=" sobject">
                 <Header/>
-            <article>
+            <article className="article">
                 <Outlet/>
+              
             </article>
+
+           
         </div>
     )
 }
