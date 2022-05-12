@@ -1,76 +1,66 @@
-.header{
-    padding:6px 70px 6px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    // transition: all .8s;
+nav{
+    padding:  0 1.5rem  0 1rem ;
+    position: fixed;
+    .container-fluid{
+        button{
+            color:#eee;
+           
+            &:focus{
+                box-shadow: none;
+                border: none;
+                outline: none;
 
-    .navbar{
-        width:75%;
-        padding: 0 0 0  0; 
-        display: flex;
-        align-items: center;
-        .ul-menu{
-            display: flex;
-            justify-content: space-between;
-            width:100%;
-            height: 100%;
+            }
+            span{
+                color: #eee;
+                font-size: 2.5rem;
+            }
+        }
+        ul{
             li{
-                list-style: none;
-             
-                .nav-link{
-                    color:#fff;
-                    transition: all .7s;
-                    &:focus{
-                        background:#dddddd49;
-                        border-radius: .4rem;
-                        text-shadow: 1px 2px 2px rgba(0,0,0,.4);
-                    }
+                
+                .active{
+                    background: rgba(238, 238, 238, 0.323);
+                    transition: all .8s;
+                    
+
                 }
 
             }
         }
-        
+       
     }
 
-    .header-perfil{
-        width:25%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color:#fff;
-        .bx-user-circle{
-            font-size: 2.3rem;
-        }
-        .bxs-moon{
-            background: #99C4C8;
-            border-radius: 2rem;
-            font-size: 1.3rem;
-            padding:.2rem;
-            transition: all .6s;
-            &:hover{
-                opacity: .8;
-                text-shadow: 1px 2px 2px rgba(0,0,0,.4);
-
-            }
-        }
-        .bxs-sun{
-            @extend .bxs-moon
-        }
-        .bxs-folder-plus{
-            font-size: 1.7rem;
-            color:#eee;
-        }
-        .first-letter{
-            
-            font-size: 1.5rem;
-            border-radius: 2rem;
-            width:12%;
-            height:5%;
+    
+    form{
+        .header-perfil{
             display: flex;
-            justify-content: center;
-            padding: 0 0 .1rem 0;
-            user-select: none;
+            align-items: center;
+            padding-right: .8rem;
+
+            .bx-user-circle{
+                color:#eee;
+                font-size: 2rem;
+            }
+
+            .first-letter{
+                width:2rem;
+                height: 2rem;
+                border-radius: 2rem;
+                color:#eee;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 1.5rem;
+            }
+
+            .carpeta{
+                font-size: 2rem;
+                .bxs-folder-plus{
+                    color:#eee;
+                }
+                
+            }
         }
     }
 }

@@ -6,7 +6,7 @@ const SelectObject = ()=>{
      
    
     return(
-        <div className=" sobject">
+        <div className=" sobject bg-dark">
                 <Header/>
             <article className="article">
                 <Outlet/>

@@ -1,11 +1,13 @@
 import app from "../firebase/FireBase";
 import { useState, useEffect } from "react";
+import { handleChecked, handleunChecked } from "../alerts/Alert";
 import {getFirestore, collection, query, onSnapshot, orderBy} from 'firebase/firestore';
 const dataBase = getFirestore(app);
 
 const Periodo1 = ()=>{
 
-    
+    const [checked, setChecked] = useState(false);
+    const [materia, settMateria] = useState({})
     const [periodo1, setPeriodo1] = useState([]);
     useEffect(()=>{
         const getAllsubject = ()=>{
@@ -21,12 +23,25 @@ const Periodo1 = ()=>{
         }
         getAllsubject();
     },[])
+
+
+ 
+    const handleCheck = e=>{
+       
+
+        
+    }
+
+
+    
+    
     
     
     return(
         <table className="table table-hover table-info table-striped table-borderless">
             <thead className="bg-primary">
                 <tr>
+                    <th></th>
                     <th>Codigo</th>
                     <th>Creditos</th>
                     <th>Asignatura</th>
@@ -47,9 +62,19 @@ const Periodo1 = ()=>{
                     periodo1.map(p1=>{
                         return(
                             <tr key={p1.id}>
+                                <td className="ps-3 ">
+                                    {/* <button onClick={handleClick} className='btn'>
+                                        <input className="form-check-input " 
+                                        type="checkbox"  checked={checked}  name={p1.id} />
+                                    </button> */}
+                                        {/* <input 
+                                        className="form-check-input " 
+                                        type="checkbox"  checked={checked}   onChange={handleCheck}/> */}
 
+                                        <input type='checkbox' name={p1.asignatura} value={p1.id} onChange={handleCheck} />
+                                </td>
                                 <td>{  p1.codigo }</td>
-                                <td>{  p1.creditos }</td>
+                                <td className="text-center">{  p1.creditos }</td>
                                 <td>{  p1.asignatura }</td>
                                 <td>{  p1.modalidad }</td>
                                 <td>{  p1.docente }</td>

@@ -25,6 +25,7 @@ const Periodo5 = ()=>{
         <table class="table table-hover table-info table-striped table-borderless">
             <thead class="bg-primary">
                 <tr>
+                    <th></th>
                     <th>Codigo</th>
                     <th>Creditos</th>
                     <th>Asignatura</th>
@@ -44,7 +45,7 @@ const Periodo5 = ()=>{
                     periodo5.map(p5=>{
                         return(
                             <tr key={p5.id}>
-
+                                <td className="ps-3"><input class="form-check-input " type="checkbox" value="" /></td>
                                 <td>{  p5.codigo }</td>
                                 <td>{  p5.creditos }</td>
                                 <td>{  p5.asignatura }</td>
