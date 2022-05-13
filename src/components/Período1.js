@@ -1,13 +1,16 @@
 import app from "../firebase/FireBase";
 import { useState, useEffect } from "react";
 import { handleChecked, handleunChecked } from "../alerts/Alert";
-import {getFirestore, collection, query, onSnapshot, orderBy} from 'firebase/firestore';
+import {getFirestore, collection, query, onSnapshot, orderBy, addDoc,} from 'firebase/firestore';
 const dataBase = getFirestore(app);
 
 const Periodo1 = ()=>{
 
+
     const [checked, setChecked] = useState(false);
-    const [materia, settMateria] = useState({})
+    const [user, setUser] = useState(
+        localStorage.getItem('user')
+    )
     const [periodo1, setPeriodo1] = useState([]);
     useEffect(()=>{
         const getAllsubject = ()=>{
@@ -25,15 +28,20 @@ const Periodo1 = ()=>{
     },[])
 
 
- 
-    const handleCheck = e=>{
+    const name = periodo1
+    const handleSelect = async(id, codigo, creditos, asignatura, modalidad, docente, horario)=>{
+        try{
+            await addDoc(collection(dataBase, `${user}`),{
+                user, id, codigo, creditos, asignatura, modalidad, docente, horario
+            })
+        }catch(err){
+            console.log(err)
+        }
        
 
+    
         
     }
-
-
-    
     
     
     
@@ -63,15 +71,10 @@ const Periodo1 = ()=>{
                         return(
                             <tr key={p1.id}>
                                 <td className="ps-3 ">
-                                    {/* <button onClick={handleClick} className='btn'>
-                                        <input className="form-check-input " 
-                                        type="checkbox"  checked={checked}  name={p1.id} />
-                                    </button> */}
-                                        {/* <input 
-                                        className="form-check-input " 
-                                        type="checkbox"  checked={checked}   onChange={handleCheck}/> */}
-
-                                        <input type='checkbox' name={p1.asignatura} value={p1.id} onChange={handleCheck} />
+                                    <button  className='btn shadow' onClick={()=>handleSelect( p1.id, p1.codigo, p1.creditos, 
+                                         p1.asignatura, p1.modalidad, p1.docente, p1.horario)}>
+                                      <i className='bx bxs-add-to-queue fs-4 text-primary shadow'></i>
+                                    </button>
                                 </td>
                                 <td>{  p1.codigo }</td>
                                 <td className="text-center">{  p1.creditos }</td>
