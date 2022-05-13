@@ -64,10 +64,15 @@ const Header = ({ getMode })=>{
                             </div>
                         
                         
-                            <div className='ms-4 first-letter' style={{ backgroundColor : color}}>
+                            <div className='ms-3 first-letter' style={{ backgroundColor : color}}>
                                 <span>{user.slice(0,1).toUpperCase()}</span>
                             </div>
                             
+                            <div className='ms-3 text-light resumen '>
+                                <NavLink to='/resumen' className={({isActive})=> isActive ? 'active nav-link text-light  p-0 text-center' 
+                                : ' text-light nav-link  p-0 text-center'}><i class='bx bxs-spreadsheet fs-2 '></i></NavLink>
+                                    <span className=' text-center '>Resumen de selección</span>
+                            </div>
                             <div className='ms-4 carpeta'>
                                 <Link to='/add_students' className=''><i className='bx bxs-folder-plus'></i></Link>
                             </div>

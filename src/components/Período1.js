@@ -34,6 +34,7 @@ const Periodo1 = ()=>{
             await addDoc(collection(dataBase, `${user}`),{
                 user, id, codigo, creditos, asignatura, modalidad, docente, horario
             })
+            handleChecked();
         }catch(err){
             console.log(err)
         }

@@ -9,6 +9,7 @@ import Periodo5 from "../components/Periodo5";
 import Periodo6 from "../components/Periodo6";
 import Periodo7 from "../components/Periodo7";
 import AddStudents from "../components/AddStudents";
+import Resumen from "../components/Resumen";
 
 const Rutas = ()=>{
 
@@ -24,8 +25,10 @@ const Rutas = ()=>{
                 <Route path="periodo_5" element={<Periodo5/>}/>
                 <Route path="periodo_6" element={<Periodo6/>}/>
                 <Route path="periodo_7" element={<Periodo7/>}/>
+                
             </Route>
             <Route path='add_students' element={<AddStudents/>}/>
+            <Route path="resumen" element={<Resumen/>}/>
             <Route path='*' element={<h1>error</h1>}/>
         </Routes>
     )
