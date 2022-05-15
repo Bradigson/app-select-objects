@@ -159,7 +159,7 @@ const Resumen = ()=>{
                     <span>{firstLertter}</span>
                 </div>
             </div>
-            <div className="mt-5  p-2">
+            <div className="mt-5  p-3 ">
                 <table className="table  table-striped table-hover">
                     
                     <tbody>
