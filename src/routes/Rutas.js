@@ -35,7 +35,7 @@ const Rutas = ()=>{
                 
             </Route>
             <Route path='add_students' element={<AddStudents/>}/>
-            <Route path="resumen" element={<Resumen/>}/>
+            <Route path="resumen" element={<Resumen m={m}/>}/>
             <Route path='*' element={<h1>error</h1>}/>
         </Routes>
     )

@@ -1,4 +1,5 @@
 .resumen{
+    
     table{
         tr{
             td{
@@ -10,6 +11,7 @@
     .user-container{
         display: flex;
         justify-content: flex-end;
+        align-items: center;
         padding: .5rem 2rem .5rem .5rem;
         .user{
             background: red;
@@ -34,7 +36,16 @@
                 height: 2rem;
                 font-size: 1.8rem;
                 border-radius: 5rem;
+                text-shadow: 1px 2px 2px rgba(0,0,0,.2);
            }
+          
+        }
+         
+        .tt{
+            border: none;
+        }
+        .bb{
+            box-shadow: none;
         }
 
     }
