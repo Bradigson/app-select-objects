@@ -4,9 +4,10 @@ import { handleChecked, handleunChecked } from "../alerts/Alert";
 import {getFirestore, collection, query, onSnapshot, orderBy, addDoc,} from 'firebase/firestore';
 const dataBase = getFirestore(app);
 
-const Periodo1 = ()=>{
+const Periodo1 = ({m})=>{
 
 
+    const [theme, setTheme] = useState('')
     const [checked, setChecked] = useState(false);
     const [user, setUser] = useState(
         localStorage.getItem('user')
@@ -28,7 +29,7 @@ const Periodo1 = ()=>{
     },[])
 
 
-    const name = periodo1
+    // console.log(m)
     const handleSelect = async(id, codigo, creditos, asignatura, modalidad, docente, horario)=>{
         try{
             await addDoc(collection(dataBase, `${user}`),{
@@ -39,15 +40,14 @@ const Periodo1 = ()=>{
             console.log(err)
         }
        
-
     
-        
     }
-    
+
+  
     
     
     return(
-        <table className="table table-hover table-info table-striped table-borderless">
+        <table className={`${m === 'light' ? 'table table-hover table-info table-striped table-borderless' : 'table table-dark table-hover table-info table-striped table-borderless'}`}>
             <thead className="bg-primary">
                 <tr>
                     <th></th>
@@ -74,7 +74,7 @@ const Periodo1 = ()=>{
                                 <td className="ps-3 ">
                                     <button  className='btn shadow' onClick={()=>handleSelect( p1.id, p1.codigo, p1.creditos, 
                                          p1.asignatura, p1.modalidad, p1.docente, p1.horario)}>
-                                      <i className='bx bxs-add-to-queue fs-4 text-primary shadow'></i>
+                                      <i className={`${m === 'light' ? 'bx bxs-add-to-queue fs-4 text-primary shadow' : 'bx bxs-add-to-queue fs-4 text-secondary shadow'}`}></i>
                                     </button>
                                 </td>
                                 <td>{  p1.codigo }</td>

@@ -2,7 +2,7 @@
   padding: 0;
 }
 .article{
-  margin-top: 5rem;
+  margin-top: 4.1rem;
 }
 
 
@@ -12,3 +12,21 @@
   }
 }
 
+
+.theme{
+  background: yellow;
+  width:5rem;
+  height:5rem;
+  position: fixed;
+  right:50px;
+  bottom: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10rem;
+}
+
+
+.display{
+  display:none;
+}

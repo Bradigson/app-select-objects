@@ -1,4 +1,5 @@
-import { Route, Routes } from "react-router-dom"
+import { Route, Routes } from "react-router-dom";
+import { useState } from "react";
 import LogIn from "../components/Login";
 import SelectObject from "../components/SelectObject";
 import Periodo1 from "../components/Período1";
@@ -12,13 +13,19 @@ import AddStudents from "../components/AddStudents";
 import Resumen from "../components/Resumen";
 
 const Rutas = ()=>{
-
     
+    const [m, setM] = useState('light')
+    
+    const theMode = (mode)=>{
+        setM(mode);
+  
+    }
+ 
     return(
         <Routes>
             <Route path='/' element={<LogIn/>}/>
-            <Route path='select-objects' element={<SelectObject/>}>
-                <Route path="periodo_1" element={<Periodo1/>}/>
+            <Route path='select-objects' element={<SelectObject TheMode={theMode} />}>
+                <Route path="periodo_1" element={<Periodo1 m={m}/>}/>
                 <Route path="periodo_2" element={<Periodo2/>}/>
                 <Route path="periodo_3" element={<Periodo3/>}/>
                 <Route path="periodo_4" element={<Periodo4/>}/>
